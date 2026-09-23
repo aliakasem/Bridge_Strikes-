@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bridge-strikes"
+version = "0.1.0"
+description = "NYC bridge-strike risk analysis: spatial enrichment and count models"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "geopandas>=0.14",
+    "shapely>=2.0",
+    "statsmodels>=0.14",
+    "matplotlib>=3.7",
+    "certifi",
+    "pyarrow",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ipykernel", "nbstripout"]
+
+[project.scripts]
+bridge-strikes = "bridge_strikes.pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
